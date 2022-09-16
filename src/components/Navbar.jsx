@@ -35,7 +35,7 @@ padding 5px;`
 
 const Input = styled.input`
 border: none;
-`
+`;
 
 const Center = styled.div`
   flex: 1;
@@ -77,7 +77,7 @@ const Navbar = () => {
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
-          <ShoppingCartOutlinedIcon></ShoppingCartOutlinedIcon> </MenuItem>
+          <ShoppingCartOutlinedIcon ></ShoppingCartOutlinedIcon> </MenuItem>
         </Right>
       </Wrapper>
     </Container>
