@@ -33,8 +33,8 @@ const Slider = () => {
       <Arrow direction="left">
         <NavigateBeforeOutlinedIcon></NavigateBeforeOutlinedIcon>
       </Arrow>
-      <Arrow>
-        <NavigateNextOutlinedIcon direction="right"></NavigateNextOutlinedIcon>
+      <Arrow direction="right">
+        <NavigateNextOutlinedIcon></NavigateNextOutlinedIcon>
       </Arrow>
     </Container>
   );
