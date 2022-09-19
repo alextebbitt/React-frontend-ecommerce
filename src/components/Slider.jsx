@@ -1,6 +1,9 @@
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
 import NavigateBeforeOutlinedIcon from "@mui/icons-material/NavigateBeforeOutlined";
 import styled from "styled-components";
+import {sliderItems} from "../data";
+import { useState } from "react";
+
 
 const Container = styled.div`
   width: 100%;
@@ -27,11 +30,14 @@ const Arrow = styled.div`
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
+  transition: all 1.5s ease;
+  transform: translateX(${props =>props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -39,6 +45,7 @@ const Slide = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
+  background-color: #${props => props.bg}
 `;
 
 const ImgContainer = styled.div`
@@ -69,74 +76,44 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
+
 const Slider = () => {
-  return (
+  const [slideIndex, setSlideIndex] = useState(0);
+    const handleClick = (direction) => {
+
+        if(direction ==="left") {
+            setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2)
+        } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
+        }
+    }
+  
+    return (
     <Container>
-      <Arrow direction="left">
+      <Arrow direction="left" onClick={() => handleClick("left")}>
         <NavigateBeforeOutlinedIcon></NavigateBeforeOutlinedIcon>
       </Arrow>
-      <Wrapper>
-        <Slide bg="f5fafd">
-          <ImgContainer>
-            <Image src="https://tebbitttextiles.files.wordpress.com/2018/07/p1040481.jpg?w=521&h=&zoom=2" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Fabric Paper</Title>
-            <Description>
-              Making Fabric paper to use as a background for both hand and
-              machine embroidery is a favourite pastime. The sheer creativity
-              involved in making these pages and the fact that I can incorporate
-              all those beautiful napkins and scraps of wrapping paper that I
-              have squirrelled away only serves to increase my joy!
-            </Description>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="fcf1ed">
-          <ImgContainer>
-            <Image src="https://tebbitttextiles.files.wordpress.com/2018/07/mermaid.jpg?w=326&h=&crop=1&zoom=2" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Cloth Dolls</Title>
-            <Description>
-              A recent passion is making Cloth Dolls. I used to run workshops
-              covering the construction and the clothing of these beauties!
-              Below you will find a selection of my favourites. They are dolls
-              for looking at not for playing with (they are not toys). I love
-              making their faces. I like them to be pretty, it is when I start
-              the needle sculpting of their faces that their characters began to
-              develop. I make their costumes at the end. They really do seem to
-              direct me themselves!!
-            </Description>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map(item => (
 
-        <Slide bg="fbfafd">
+            <Slide bg={item.bg}>
           <ImgContainer>
-            <Image src="https://tebbitttextiles.files.wordpress.com/2018/07/william-on-horse.jpg?w=408&h=&crop=1&zoom=2" />
+            <Image src={item.img} />
           </ImgContainer>
           <InfoContainer>
-            <Title>Bayeux Tapestry</Title>
+            <Title>{item.title}</Title>
             <Description>
-              The Bayeux Tapestry has always fascinated me, so when I needed to
-              produce something for an exhibition it was a short inspirational
-              step to base a body of work on the tapestry. I used a book by
-              David M Wilson (which contains sizable full colour reproductions
-              of the tapestry) to choose the images and I developed a method of
-              reproducing them using machine embroidery. Each picture that I
-              produced gave me such satisfaction that I wanted to keep going,
-              but what to do with them, could I really display them all
-              individually in frames? Then I came up with the idea of making my
-              own book of embroideries, I made the pages from fabric paper and
-              never looked back!
+              {item.description}
             </Description>
             <Button>SHOP NOW</Button>
           </InfoContainer>
         </Slide>
+            ))}
+       
       </Wrapper>
 
-      <Arrow direction="right">
+      <Arrow direction="right" onClick={() => handleClick("right")}>
         <NavigateNextOutlinedIcon></NavigateNextOutlinedIcon>
       </Arrow>
     </Container>
