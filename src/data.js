@@ -38,4 +38,39 @@ export const categories = [
         img: "https://tebbitttextiles.files.wordpress.com/2018/07/altered-book-1.jpg?w=326&h=&crop=1&zoom=2",
         title: "Altered Books",
     },
+];
+
+export const popularProducts = [
+    {
+        id: 1,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/altered-book-8.jpg?w=640&h=&crop=1&zoom=2",
+    },
+    {
+        id: 2,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/p1020792.jpg?w=521&h=&zoom=2",
+    },
+    {
+        id: 3,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/p1040476.jpg?w=521&h=&zoom=2",
+    },
+    {
+        id: 4,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/polka-dot1.jpg?w=326&h=&crop=1&zoom=2",
+    },
+    {
+        id: 5,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/green-fairy.jpg?w=326&h=&crop=1&zoom=2",
+    },
+    {
+        id: 6,
+        img: "https://tebbitttextiles.files.wordpress.com/2020/05/blue-vw.jpg?w=533&h=&zoom=2",
+    },
+    {
+        id: 7,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/p1040966.jpg?w=547&h=&zoom=2",
+    },
+    {
+        id: 8,
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/flowery-marge.jpg?w=373&h=&zoom=2",
+    },
 ]
