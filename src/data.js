@@ -43,15 +43,15 @@ export const categories = [
 export const popularProducts = [
     {
         id: 1,
-        img: "https://tebbitttextiles.files.wordpress.com/2018/07/altered-book-8.jpg?w=640&h=&crop=1&zoom=2",
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/img_0850.jpg?w=306&h=&zoom=2",
     },
     {
         id: 2,
-        img: "https://tebbitttextiles.files.wordpress.com/2018/07/p1020792.jpg?w=521&h=&zoom=2",
+        img: "https://tebbitttextiles.files.wordpress.com/2020/05/harbour-houses-3a.jpg?w=400&h=&zoom=2",
     },
     {
         id: 3,
-        img: "https://tebbitttextiles.files.wordpress.com/2018/07/p1040476.jpg?w=521&h=&zoom=2",
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/altered-book-2.jpg?w=326&h=&crop=1&zoom=2",
     },
     {
         id: 4,
@@ -67,7 +67,7 @@ export const popularProducts = [
     },
     {
         id: 7,
-        img: "https://tebbitttextiles.files.wordpress.com/2018/07/p1040966.jpg?w=547&h=&zoom=2",
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/party-girls2.jpg?w=373&h=&zoom=2",
     },
     {
         id: 8,
