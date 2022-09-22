@@ -13,7 +13,7 @@ font-weight: 500`
 const Announcement = () => {
   return (
     <Container>
-        Super deal! free shipping on Oders over £50
+        Super deal! free shipping on Orders over £50
     </Container>
   )
 }
