@@ -4,11 +4,13 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -33,7 +35,9 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+  ${mobile({ display: "none" })}
+`;
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
