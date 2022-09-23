@@ -57,7 +57,7 @@ const ProductList = () => {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select name="color" onChange={handleFilters}>
+          {/* <Select name="color" onChange={handleFilters}>
             <Option disabled>Numbers</Option>
             <Option>White</Option>
             <Option>Black</Option>
@@ -65,14 +65,14 @@ const ProductList = () => {
             <Option>Blue</Option>
             <Option>Yellow</Option>
             <Option>Green</Option>
-          </Select>
+          </Select> */}
           <Select name="category" onChange={handleFilters}>
             <Option disabled>Category</Option>
-            <Option>1</Option>
-            <Option>2</Option>
-            <Option>3</Option>
-            <Option>4</Option>
-            <Option>5</Option>
+            <Option>Doll</Option>
+            <Option>Free Machine Embroidery</Option>
+            <Option>Altered books</Option>
+            <Option>Altered Books</Option>
+            <Option>Water Soluble and Chiffon work</Option>
             <Option>6</Option>
           </Select>
         </Filter>
@@ -85,7 +85,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort}/>
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
