@@ -26,17 +26,20 @@ export const categories = [
     {
         id: 1,
         img: "https://tebbitttextiles.files.wordpress.com/2020/05/beach-life.jpg?w=2216",
-        title: "Free Machine Embroidery",
+        title: "Beach Caravan",
+        cat: "Free Machine Embroidery"
     },
     {
         id: 2,
         img: "https://tebbitttextiles.files.wordpress.com/2018/07/img_0824.jpg?w=596&h=&zoom=2",
-        title: "Water Soluble & Chiffon work",
+        title: "Casitas de Espana",
+        cat: "Water Soluble & Chiffon work"
     },
     {
         id: 3,
         img: "https://tebbitttextiles.files.wordpress.com/2018/07/altered-book-1.jpg?w=326&h=&crop=1&zoom=2",
         title: "Altered Books",
+        cat: "Altered Books",
     },
 ];
 
