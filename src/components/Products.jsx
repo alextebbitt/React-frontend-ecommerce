@@ -38,12 +38,12 @@ export const Products = ({ cat, filters, sort }) => {
           )
         )
       );
-  }, [cat, filters]);
+  }, [products, cat, filters]);
 console.log("producta", products)
 
   return (
     <Container>
-      {products.map((item) => (
+      {filteredProducts.map((item) => (
         <Product item={item} key={item.id} />
       ))}
     </Container>

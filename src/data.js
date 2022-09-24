@@ -25,15 +25,15 @@ export const sliderItems = [
 export const categories = [
     {
         id: 1,
-        img: "https://tebbitttextiles.files.wordpress.com/2020/05/beach-life.jpg?w=2216",
-        title: "Beach Caravan",
-        cat: "Free Machine Embroidery"
+        img: "https://tebbitttextiles.files.wordpress.com/2018/07/black-dress-doll.jpg?w=326&h=&crop=1&zoom=2",
+        title: "Dolls",
+        cat: "Doll"
     },
     {
         id: 2,
         img: "https://tebbitttextiles.files.wordpress.com/2018/07/img_0824.jpg?w=596&h=&zoom=2",
-        title: "Casitas de Espana",
-        cat: "Water Soluble & Chiffon work"
+        title: "Water Soluble and Chiffon work",
+        cat: "Water Soluble and Chiffon work"
     },
     {
         id: 3,
