@@ -7,6 +7,7 @@ import { Products } from "../components/Products";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 const Title = styled.h1`
@@ -45,8 +46,9 @@ const ProductList = () => {
     const value = e.target.value;
     setFilters({
       ...filters,
-      [e.target.name]: value
-    })
+      [e.target.name]: value,
+    });
+    console.log("yooo!", e.target)
   };
   
   return (
@@ -68,7 +70,12 @@ const ProductList = () => {
           </Select> */}
           <Select name="category" onChange={handleFilters}>
             <Option disabled>Category</Option>
-            <Option>Doll</Option>
+            <Option>
+              <Link to={`/products/Doll`}>
+
+                Doll
+              </Link>
+                </Option>
             <Option>Free Machine Embroidery</Option>
             <Option>Altered books</Option>
             <Option>Altered Books</Option>
@@ -79,7 +86,7 @@ const ProductList = () => {
         <Filter>
           <FilterText>Sort Products:</FilterText>
           <Select onChange={(e) => setSort(e.target.value)}>
-            <Option value="newest">Newest</Option>
+            <Option value="newest">newest</Option>
             <Option value="asc">Price (asc)</Option>
             <Option value="desc">Price (desc)</Option>
           </Select>

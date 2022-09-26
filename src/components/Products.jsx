@@ -24,7 +24,9 @@ export const Products = ({ cat, filters, sort }) => {
             : "http://localhost:8787/api/products"
         );
         setProducts(res.data);
-      } catch (err) {}
+      } catch (err) {
+
+      }
     };
     getProducts();
   }, [cat]);
@@ -32,14 +34,31 @@ export const Products = ({ cat, filters, sort }) => {
   useEffect(() => {
     cat &&
       setFilteredProducts(
-       filteredProducts.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
-          )
+        products.filter(
+          (item) =>
+            Object.entries(filters).every(([key, value]) =>
+              item[key].includes(value)
+            ),
+          console.log(Object.entries(filters).every)
         )
       );
   }, [products, cat, filters]);
-console.log("producta", products)
+
+  useEffect(() => {
+    if (sort === "newest") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    } else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => b.price - a.price)
+      );
+    }
+    }, [sort]);
 
   return (
     <Container>
