@@ -3,11 +3,14 @@ import styled from "styled-components";
 // import EmailIcon from "@mui/icons-material/Email";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import {mobile} from "../responsive";
+import { mobile } from "../responsive";
+import { Badge } from "@mui/material";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
- ${mobile({height: "50px"})}
+  ${mobile({ height: "50px" })}
 `;
 
 const Wrapper = styled.div`
@@ -35,7 +38,7 @@ border: 1px solid lightgrey;
 display: flex;
 align-items: center;
 margin-left: 25px;
-padding 5px;`
+padding 5px;`;
 
 const Input = styled.input`
   border: none;
@@ -68,15 +71,16 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input placeholder="Search">
-            </Input>
-            <SearchIcon style={{color: "grey", fontSize:16}}></SearchIcon>
+            <Input placeholder="Search"></Input>
+            <SearchIcon style={{ color: "grey", fontSize: 16 }}></SearchIcon>
           </SearchContainer>
         </Left>
 
@@ -86,8 +90,13 @@ const Navbar = () => {
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
-          <ShoppingCartOutlinedIcon ></ShoppingCartOutlinedIcon> </MenuItem>
+          <Link to="/cart">
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlinedIcon></ShoppingCartOutlinedIcon>
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>

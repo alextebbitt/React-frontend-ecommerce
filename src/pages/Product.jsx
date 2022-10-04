@@ -8,7 +8,8 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-import axios from "axios";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 
@@ -67,47 +68,46 @@ const Amount = styled.span`
   margin: 0px 5px;
 `;
 const Button = styled.button`
-padding: 15px;
-border: 2px solid teal;
-background-color: white;
-cursor: pointer;
-font-weight: 500;
+  padding: 15px;
+  border: 2px solid teal;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
 
-&:hover{
+  &:hover {
     background-color: #f8f4f4;
-}`;
+  }
+`;
 
 const Product = () => {
-   const location = useLocation();
-   const id = location.pathname.split("/")[2];
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
 
-   const [product, setProduct] = useState({});
-   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
-   useEffect(()=>{
-    const getProduct = async ()=>{
+  useEffect(() => {
+    const getProduct = async () => {
       try {
-        const res = await publicRequest.get("/products/find/"+id)
-        setProduct(res.data)
-        
-      } catch (error) {
-        
-      }
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch (error) {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
     }
-    getProduct()
-   }, [id]);
+  };
 
-const handleQuantity = (type) =>{
-  if (type === "dec") {
-    quantity > 1 && setQuantity(quantity - 1)
-  } else {
-    setQuantity(quantity + 1)
-  }
-}
-
-const handleClick = () => {
-  axios.pos
-}
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, quantity}));
+  };
 
   return (
     <Container>
