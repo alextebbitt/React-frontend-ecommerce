@@ -7,7 +7,9 @@ import { Products } from "../components/Products";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { MenuItem, MenuList, Link } from "@mui/material";
+import React from "react";
 
 const Container = styled.div``;
 const Title = styled.h1`
@@ -36,21 +38,14 @@ const Select = styled.select`
 `;
 
 const Option = styled.option``;
-const ProductList = () => {
+
+const ProductList = (id) => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
-  const [filters, setFilters] = useState({});
+  // const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
-
-  const handleFilters = (e) => {
-    const value = e.target.value;
-    setFilters({
-      ...filters,
-      [e.target.name]: value,
-    });
-    console.log("yooo!", e.target)
-  };
   
+
   return (
     <Container>
       <Announcement />
@@ -58,30 +53,28 @@ const ProductList = () => {
       <Title>Products</Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Filter Products:</FilterText>
-          {/* <Select name="color" onChange={handleFilters}>
-            <Option disabled>Numbers</Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
-          </Select> */}
-          <Select name="category" onChange={handleFilters}>
-            <Option disabled>Category</Option>
-            <Option>
-              <Link to={`/products/Doll`}>
-
-                Doll
-              </Link>
-                </Option>
-            <Option>Free Machine Embroidery</Option>
-            <Option>Altered books</Option>
-            <Option>Altered Books</Option>
-            <Option>Water Soluble and Chiffon work</Option>
-            <Option>6</Option>
-          </Select>
+          <FilterText>Categories:</FilterText>
+          <MenuList>
+            <MenuItem
+              component={Link}
+              href="http://localhost:3000/products/Doll"
+            >
+              Doll
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              href="http://localhost:3000/products/Altered%20Books"
+            >
+              Altered Books
+            </MenuItem>
+            <MenuItem
+              component={Link}
+              href="http://localhost:3000/products/Water%20Soluble%20and%20Chiffon%20work"
+            >
+              Water Soluble and Chiffon work
+            </MenuItem>
+          </MenuList>
+         
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
@@ -92,7 +85,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <Products cat={cat} sort={sort} key={id} />
       <Newsletter />
       <Footer />
     </Container>

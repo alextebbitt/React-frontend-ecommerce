@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import { Product } from "./Product";
 import axios from "axios";
+import React from "react";
 
 const Container = styled.div`
   padding: 20px;
@@ -11,9 +11,9 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const Products = ({ cat, filters, sort }) => {
+export const Products = ({ cat, filters, sort, id }) => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -21,50 +21,35 @@ export const Products = ({ cat, filters, sort }) => {
         const res = await axios.get(
           cat
             ? `http://localhost:8787/api/products?category=${cat}`
-            : "http://localhost:8787/api/products"
+            :
+             "http://localhost:8787/api/products"
         );
+        console.log("res", res)
         setProducts(res.data);
       } catch (err) {
-
+        console.err(err);
       }
     };
     getProducts();
   }, [cat]);
-
-  useEffect(() => {
-    cat &&
-      setFilteredProducts(
-        products.filter(
-          (item) =>
-            Object.entries(filters).every(([key, value]) =>
-              item[key].includes(value)
-            ),
-          console.log(Object.entries(filters).every)
-        )
-      );
-  }, [products, cat, filters]);
-
+  
   useEffect(() => {
     if (sort === "newest") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.createdAt - b.createdAt)
-      );
+      setProducts((prev) => [...prev].sort((a, b) => a.createdAt - b.createdAt));
     } else if (sort === "asc") {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.price - b.price)
-      );
+      setProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
     } else {
-      setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => b.price - a.price)
-      );
+      setProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
     }
-    }, [sort]);
+  }, [sort]);
 
   return (
     <Container>
-      {filteredProducts.map((item) => (
-        <Product item={item} key={item.id} />
-      ))}
+      {cat ? products.map((item, id) => 
+        <Product item={item} key={id} />
+      ) : products.slice(0,8).map((item, id) => 
+        <Product item={item} key={id} />
+      )}
     </Container>
   );
 };
