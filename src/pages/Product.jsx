@@ -5,6 +5,9 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div``;
 
@@ -74,32 +77,50 @@ font-weight: 500;
 }`;
 
 const Product = () => {
+   const location = useLocation();
+   const id = location.pathname.split("/")[2];
+
+   const [product, setProduct] = useState({});
+   const [quantity, setQuantity] = useState(1);
+
+   useEffect(()=>{
+    const getProduct = async ()=>{
+      try {
+        const res = await publicRequest.get("/products/find/"+id)
+        setProduct(res.data)
+        
+      } catch (error) {
+        
+      }
+    }
+    getProduct()
+   }, [id]);
+
+const handleQuantity = (type) =>{
+  if (type === "dec") {
+    quantity > 1 && setQuantity(quantity - 1)
+  } else {
+    setQuantity(quantity + 1)
+  }
+}
+
   return (
     <Container>
       <Announcement />
       <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://tebbitttextiles.files.wordpress.com/2018/07/p1040966.jpg?w=547&h=&zoom=2" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Casitas de espana</Title>
-          <Desc>
-            A recent passion is making Cloth Dolls. I used to run workshops
-            covering the construction and the clothing of these beauties! Below
-            you will find a selection of my favourites. They are dolls for
-            looking at not for playing with (they are not toys). I love making
-            their faces I like them to be pretty, it is when I start the needle
-            sculpting of their faces that their characters began to develop. I
-            make their costumes at the end they really do seem to direct me
-            themselves!!
-          </Desc>
-          <Price>£500</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.description}</Desc>
+          <Price>£ {product.price}</Price>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>

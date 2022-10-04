@@ -50,7 +50,7 @@ const ProductList = (id) => {
     <Container>
       <Announcement />
       <Navbar />
-      <Title>Products</Title>
+      <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Categories:</FilterText>
