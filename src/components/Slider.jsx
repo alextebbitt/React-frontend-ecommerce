@@ -6,18 +6,20 @@ import { useState } from "react";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
-  width: 100%;
+  width: 95%;
   height: 100vh;
   display: flex;
   overflow: hidden;
   position: relative;
   ${mobile({ display: "none" })}
+  padding: 25px;
+  
 `;
 
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: white;
+  background-color: black;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -31,6 +33,7 @@ const Arrow = styled.div`
   cursor: pointer;
   opacity: 0.5;
   z-index: 2;
+  color: white;
 `;
 
 const Wrapper = styled.div`
@@ -54,7 +57,12 @@ const ImgContainer = styled.div`
 `;
 const InfoContainer = styled.div`
 flex: 1
-padding: 50px`;
+padding: 50px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+`;
 
 const Image = styled.img`
   height: 80%;
@@ -68,6 +76,7 @@ const Description = styled.p`
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
+  padding: 50px;
 `;
 const Button = styled.button`
   padding: 10px;
